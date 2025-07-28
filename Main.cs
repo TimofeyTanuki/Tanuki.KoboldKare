@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Tanuki.KoboldKare;
 
-[BepInPlugin("c6e77d51-a831-42e1-ba1c-d007cc546c31", "Tanuki.KoboldKare", "1.0.0.2")]
+[BepInPlugin("c6e77d51-a831-42e1-ba1c-d007cc546c31", "Tanuki.KoboldKare", "1.0.1.0")]
 [BepInProcess("KoboldKare.exe")]
 public class Main : BaseUnityPlugin
 {
@@ -47,6 +47,6 @@ public class Main : BaseUnityPlugin
             return;
 
         UsageAnnounced = true;
-        CheatsManager.AppendText("<b><size=12><color=#e64c44>Tanuki.KoboldKare by Timofey Tanuki / tanu.su</color></size>\n<size=11><color=#577fba>Replaced commands:\ncum, equip, skip, swap</color>\n<color=#57adba>Added commands:\nteleport, kku</color>\n<color=#57adba>The use of any commands is not displayed in the chat for others.</color></size></b>");
+        CheatsManager.AppendText("<b><size=12><color=#e64c44>Tanuki.KoboldKare by Timofey Tanuki / tanu.su</color></size>\n<size=11><color=#577fba>Replaced commands:\ncheats, cum, equip, sculpt, skip, swap</color>\n<color=#57adba>Added commands:\nteleport, kku</color>\n<color=#57adba>The use of any commands is not displayed in the chat for others.</color></size></b>");
     }
 }

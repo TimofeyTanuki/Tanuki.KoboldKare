@@ -29,6 +29,8 @@ internal class CheatsProcessor
             new Skip(),
             new Swap(),
             new Teleport(),
+            new Cheats(),
+            new Sculpt(),
             new Commands.Tanuki()
         ];
 
@@ -40,9 +42,10 @@ internal class CheatsProcessor
         if (!Text.StartsWith("/"))
             return;
 
-
         if (Text.Length <= 1)
             return;
+
+        ShouldAllow = false;
 
         int ArgumentsIndex = Text.IndexOf(' ');
         if (ArgumentsIndex < 0)

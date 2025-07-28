@@ -9,7 +9,7 @@ internal static class PlayerPossession
     {
         public delegate void OnBefore(string Text, ref bool ShouldAllow);
         public static event OnBefore Before;
-        public static void Prefix(global::PlayerPossession __instance, ref string t)
+        public static void Prefix(ref string t)
         {
             bool ShouldAllow = true;
             Before?.Invoke(t, ref ShouldAllow);

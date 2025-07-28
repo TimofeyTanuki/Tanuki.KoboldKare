@@ -74,6 +74,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Sculpt.cs" />
+    <Compile Include="Commands\Cheats.cs" />
     <Compile Include="Commands\Tanuki.cs" />
     <Compile Include="Managers\CheatsProcessor.cs" />
     <Compile Include="Commands\Swap.cs" />
