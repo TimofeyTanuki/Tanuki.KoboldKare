@@ -52,14 +52,7 @@
       <HintPath>D:\Programs\Steam\steamapps\common\KoboldKare\KoboldKare_Data\Managed\PhotonUnityNetworking.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>D:\Programs\Steam\steamapps\common\KoboldKare\KoboldKare_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -77,7 +70,7 @@
     <Compile Include="Commands\Sculpt.cs" />
     <Compile Include="Commands\Cheats.cs" />
     <Compile Include="Commands\Tanuki.cs" />
-    <Compile Include="Managers\CheatsProcessor.cs" />
+    <Compile Include="Managers\Command.cs" />
     <Compile Include="Commands\Swap.cs" />
     <Compile Include="Commands\Skip.cs" />
     <Compile Include="Commands\Equip.cs" />
@@ -85,7 +78,7 @@
     <Compile Include="Commands\Teleport.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Managers\UsableMachines.cs" />
-    <Compile Include="Models\Command.cs" />
+    <Compile Include="Models\ICommand.cs" />
     <Compile Include="Patches\CheatsProcessor.cs" />
     <Compile Include="Patches\PlayerPossession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

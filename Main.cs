@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Tanuki.KoboldKare;
 
-[BepInPlugin("c6e77d51-a831-42e1-ba1c-d007cc546c31", "Tanuki.KoboldKare", "1.0.1.0")]
+[BepInPlugin("c6e77d51-a831-42e1-ba1c-d007cc546c31", "Tanuki.KoboldKare", "1.1.0.0")]
 [BepInProcess("KoboldKare.exe")]
 public class Main : BaseUnityPlugin
 {
@@ -14,7 +14,7 @@ public class Main : BaseUnityPlugin
 
     internal ManualLogSource ManualLogSource;
 
-    internal Managers.CheatsProcessor CheatsManager;
+    internal Managers.Command CheatsManager;
     internal Managers.UsableMachines UsableMachinesManager;
 
     private bool UsageAnnounced = false;
@@ -30,14 +30,13 @@ public class Main : BaseUnityPlugin
         if (Application.version != ApplicationVersion)
             ManualLogSource.LogWarning($"This plugin is made for game version {ApplicationVersion} (your version is {Application.version})!\nNormal operation is not guaranteed.\nYou can contact the developer if necessary.");
 
-        CheatsManager = Managers.CheatsProcessor.GetInstance();
+        CheatsManager = Managers.Command.GetInstance();
         UsableMachinesManager = Managers.UsableMachines.GetInstance();
 
         Patches.CheatsProcessor.Constructor.After += Constructor_After;
 
         Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
     }
-
     private void Constructor_After(CheatsProcessor CheatsProcessor)
     {
         if (LevelLoader.instance is null)

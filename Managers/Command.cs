@@ -7,21 +7,20 @@ using Tanuki.KoboldKare.Models;
 
 namespace Tanuki.KoboldKare.Managers;
 
-internal class CheatsProcessor
+internal class Command
 {
-    private static CheatsProcessor Instance;
-    private CheatsProcessor()
+    private static Command Instance;
+    public CheatsProcessor CheatsProcessor { get; private set; }
+    private Command()
     {
         Patches.CheatsProcessor.Constructor.After += Constructor_After;
         Patches.PlayerPossession.OnTextSubmit.Before += OnTextSubmit_Before;
     }
-    public static CheatsProcessor GetInstance()
+    public static Command GetInstance()
     {
         Instance ??= new();
         return Instance;
     }
-
-    public global::CheatsProcessor OriginalCheatsProcessor { get; private set; }
     private readonly List<ICommand> Commands =
         [
             new Cum(),
@@ -64,6 +63,10 @@ internal class CheatsProcessor
                     continue;
             }
 
+            /*
+             * This should be reworked to improve parameter handling.
+             * Currently, parameters are separated strictly by spaces, so parameters cannot be compound (consisting of two or more values).
+             */
             string[] Arguments = ArgumentsIndex == Text.Length ? [] : Text.Substring(ArgumentsIndex).Split([' '], StringSplitOptions.RemoveEmptyEntries);
 
             Command.Execute(Arguments);
@@ -71,7 +74,7 @@ internal class CheatsProcessor
         }
         try
         {
-            global::CheatsProcessor.ProcessCommand((Kobold)PhotonNetwork.LocalPlayer.TagObject, Text);
+            CheatsProcessor.ProcessCommand((Kobold)PhotonNetwork.LocalPlayer.TagObject, Text);
         }
         catch (Exception Exception)
         {
@@ -79,6 +82,6 @@ internal class CheatsProcessor
             Main.Instance.ManualLogSource.LogError($"Command: \"{Text}\"\n{Exception}");
         }
     }
-    private void Constructor_After(global::CheatsProcessor CheatsProcessor) => OriginalCheatsProcessor = CheatsProcessor;
-    public void AppendText(string Text) => global::CheatsProcessor.AppendText(Text + "\n");
+    private void Constructor_After(CheatsProcessor CheatsProcessor) => this.CheatsProcessor = CheatsProcessor;
+    public void AppendText(string Text) => CheatsProcessor.AppendText(Text + "\n");
 }

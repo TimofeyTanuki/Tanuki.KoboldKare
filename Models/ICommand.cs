@@ -1,6 +1,6 @@
 ﻿namespace Tanuki.KoboldKare.Models;
 
-internal interface ICommand
+public interface ICommand
 {
     public string Name { get; }
     public string[] Aliases { get; }
